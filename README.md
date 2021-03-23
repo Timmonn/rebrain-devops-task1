@@ -39,15 +39,15 @@
 **Вот пример файла конфигурации:**
 
 ```
-server {listen 80 default; *#этот конфиг - по умолчанию для 80 порта*
+server {listen 80 default; #этот конфиг - по умолчанию для 80 порта
 server_name _; #хитрый ключик, обозначающий, что этот конфиг применим для любого сайта
-set $sathost $host;  *#В sathost будет лежать имя сайта. Так же должна называться директория* 
+set $sathost $host;  #В sathost будет лежать имя сайта. Так же должна называться директория 
 if ( $host ~ ^(www\.)?(.+)$ ) 
 {set $sathost $2;}
-root   /var/www/all/$sathost; *#корень сайта определяем автоматически*
-index index.php index.html index.htm; *#в каком порядке искать индексные файлы*
+root   /var/www/all/$sathost; #корень сайта определяем автоматически
+index index.php index.html index.htm; #в каком порядке искать индексные файлы
 access_log off;	
-location / { *# правила ниже применяются для любых запросов*
+location / { # правила ниже применяются для любых запросов
 set $sathost undefined;
 rewrite ^ /index.php last;}
 ```
